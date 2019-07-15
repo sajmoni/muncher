@@ -12,7 +12,5 @@
 
 # TODO
 
- - Enable customizing paths
-
  - Enable passing options
  

@@ -29,7 +29,7 @@ processFolder(inputFolder)
 execSync(`texturepacker --data ${outputFolder}/spritesheet.json --format json --sheet ${outputFolder}/spritesheet.png ${texturePackerOptions} ${exportFolder}`)
 clearFolder(tmpObj.name)
 tmpObj.removeCallback()
-console.log('new spritesheet created.')
+console.log('New sprite sheet created')
 
 function processFolder(folder) {
   console.log(folder)
