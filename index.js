@@ -3,7 +3,17 @@ const { execSync } = require('child_process')
 const fs = require('fs')
 const tmp = require('tmp')
 
-const baseFolder = './assets/images/'
+const inputFolder = process.argv[2]
+const outputFolder = process.argv[3]
+
+if (!inputFolder) {
+  throw new Error('No input folder specified')
+}
+
+if (!outputFolder) {
+  throw new Error('No output folder specified')
+}
+
 const tmpObj = tmp.dirSync({ unsafeCleanup: false })
 const tempFolder = createFolder(path.join(tmpObj.name, 'temp/'))
 const exportFolder = createFolder(path.join(tmpObj.name, 'export/'))
@@ -14,8 +24,9 @@ const texturePackerOptions =
 */
 const texturePackerOptions = ''
 
-processFolder(baseFolder)
-execSync(`texturepacker --data ./public/assets/spritesheet.json --format json --sheet ./public/assets/spritesheet.png ${texturePackerOptions} ${exportFolder}`)
+processFolder(inputFolder)
+
+execSync(`texturepacker --data ${outputFolder}/spritesheet.json --format json --sheet ${outputFolder}/spritesheet.png ${texturePackerOptions} ${exportFolder}`)
 clearFolder(tmpObj.name)
 tmpObj.removeCallback()
 console.log('new spritesheet created.')
@@ -28,7 +39,7 @@ function processFolder(folder) {
     } else if (file.endsWith('.piskel')) {
       piskelToPNG(folder, file)
     } else if (file.endsWith('.png')) {
-      const foldername = folder.replace(baseFolder, '')
+      const foldername = folder.replace(inputFolder, '')
       const targetFolder = createFolder(path.join(exportFolder, foldername))
       fs.copyFileSync(path.join(folder, file), path.join(targetFolder, file))
     }
@@ -41,7 +52,7 @@ function piskelToPNG(folder, file) {
   const { height, width } = data.piskel
   const name = file.slice(0, -7)
   const layers = getLayerData(data)
-  const foldername = folder.replace(baseFolder, '')
+  const foldername = folder.replace(inputFolder, '')
 
   writeLayersToFiles(layers, name)
   mergeLayers(layers, name)

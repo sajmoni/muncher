@@ -6,6 +6,10 @@
 
  - tmp
 
+# How to use
+
+`node index.js example/sprites example/output`
+
 # TODO
 
  - Enable customizing paths
