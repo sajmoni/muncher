@@ -4,6 +4,7 @@
 
  - imagemagick
 
+ - tmp
 
 # TODO
 
