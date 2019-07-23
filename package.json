@@ -1,6 +1,6 @@
 {
-  "name": "extract-texture-packer",
-  "version": "1.0.0",
+  "name": "muncher",
+  "version": "0.0.1",
   "description": "A tool to extract a spritesheet from the command line",
   "main": "index.js",
   "directories": {

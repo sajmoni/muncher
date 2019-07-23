@@ -1,4 +1,4 @@
-# Extract texture packer
+# Muncher
 
 Reads your `.png` and `.piskel` files and automatically generates sprite sheets using Texture Packer.
 
