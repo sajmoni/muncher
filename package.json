@@ -2,11 +2,15 @@
   "name": "muncher",
   "version": "0.0.1",
   "description": "A tool to extract a spritesheet from the command line",
-  "main": "index.js",
+  "main": "./index.js",
+  "files": [
+    "/index.js"
+  ],
   "directories": {
     "example": "example"
   },
   "scripts": {
+    "build": "rm -rf dist && parcel build ./index.js --target node --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +23,11 @@
     "url": "https://github.com/sajmoni/extract-texture-packer/issues"
   },
   "homepage": "https://github.com/sajmoni/extract-texture-packer#readme",
+  "bin": "./index.js",
   "dependencies": {
     "tmp": "^0.1.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
   }
 }

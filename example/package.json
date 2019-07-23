@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "refresh": "rm -rf node_modules && yarn",
+    "munch": "muncher sprites output"
+  },
+  "dependencies": {
+    "muncher": "file:../"
+  }
+}

@@ -12,7 +12,9 @@ You just specify the `input` and `output` folders and the tool takes care of the
 
 ## How to use
 
-`node index.js example/sprites example/output`
+`npm i --save-dev muncher` or `yarn add --dev muncher`
+
+`muncher example/sprites example/output`
 
 It will use the options that you have specified in the Texture Packer UI.
 
@@ -21,3 +23,4 @@ It will use the options that you have specified in the Texture Packer UI.
  - Enable passing options on the command line
 
  - Default input and output folders
+ 
