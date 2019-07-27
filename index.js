@@ -28,15 +28,20 @@ const texturePackerOptions =
 */
 const texturePackerOptions = ''
 
-processFolder(inputFolder)
+try {
+  processFolder(inputFolder)
 
-execSync(`texturepacker --data ${outputFile} --format json --sheet ${outputFile} ${texturePackerOptions} ${exportFolder}`)
-clearFolder(tmpObj.name)
-tmpObj.removeCallback()
+  execSync(`texturepacker --data ${outputFile}.json --format json --sheet ${outputFile}.png ${texturePackerOptions} ${exportFolder}`)
+  clearFolder(tmpObj.name)
+  tmpObj.removeCallback()
 
-const GREEN_TEXT = '\x1b[32m'
-// eslint-disable-next-line no-console
-console.log(`${GREEN_TEXT}%s\x1b[0m`, 'Sprite sheet created!')
+  const GREEN_TEXT = '\x1b[32m'
+  // eslint-disable-next-line no-console
+  console.log(`${GREEN_TEXT}%s\x1b[0m`, 'Sprite sheet created!')
+} catch (error) {
+  // eslint-disable-next-line no-console
+  console.error(error)
+}
 
 function processFolder(folder) {
   fs.readdirSync(folder).forEach((file) => {
@@ -54,7 +59,7 @@ function processFolder(folder) {
 
 
 function piskelToPNG(folder, file) {
-  const data = JSON.parse(fs.readFileSync(folder + file, 'UTF-8'))
+  const data = JSON.parse(fs.readFileSync(`${folder}/${file}`, 'UTF-8'))
   const { height, width } = data.piskel
   const name = file.slice(0, -7)
   const layers = getLayerData(data)
@@ -67,7 +72,7 @@ function piskelToPNG(folder, file) {
     width,
     foldername,
     inputFile: name,
-    outputFile: name,
+    outputFileName: name,
   })
   // If the file name includes left or right:
   // Generate a copy of the file that is flipped horizontally.
