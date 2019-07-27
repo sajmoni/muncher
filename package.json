@@ -1,6 +1,6 @@
 {
   "name": "muncher",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tool to extract a spritesheet from the command line",
   "main": "./index.js",
   "files": [
