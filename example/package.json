@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "refresh": "rm -rf node_modules && yarn",
-    "munch": "muncher sprites output"
+    "munch": "rm -rf output && muncher --input sprites --output output/spritesheet.json"
   },
   "dependencies": {
     "muncher": "file:../"

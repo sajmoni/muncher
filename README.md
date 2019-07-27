@@ -10,11 +10,15 @@ You just specify the `input` and `output` folders and the tool takes care of the
 
  - imagemagick
 
+## Optional dependencies
+
+ - Piskel
+
 ## How to use
 
 `npm i --save-dev muncher` or `yarn add --dev muncher`
 
-`muncher example/sprites example/output`
+`muncher --input example/sprites --output example/output/spritesheet.png`
 
 It will use the options that you have specified in the Texture Packer UI.
 

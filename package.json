@@ -28,6 +28,7 @@
     "tmp": "^0.1.0"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "yargs": "^13.3.0"
   }
 }

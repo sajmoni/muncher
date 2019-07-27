@@ -4,16 +4,17 @@ const path = require('path')
 const { execSync } = require('child_process')
 const fs = require('fs')
 const tmp = require('tmp')
+const argv = require('yargs').argv
 
-const inputFolder = process.argv[2]
-const outputFolder = process.argv[3]
+const inputFolder = argv.input
+const outputFile = argv.output
 
 if (!inputFolder) {
-  throw new Error('No input folder specified')
+  throw new Error('No input folder specified, use the flag "--input ')
 }
 
-if (!outputFolder) {
-  throw new Error('No output folder specified')
+if (!outputFile) {
+  throw new Error('No output file specified, use the flag "--output"')
 }
 
 const tmpObj = tmp.dirSync({ unsafeCleanup: false })
@@ -28,7 +29,7 @@ const texturePackerOptions = ''
 
 processFolder(inputFolder)
 
-execSync(`texturepacker --data ${outputFolder}/spritesheet.json --format json --sheet ${outputFolder}/spritesheet.png ${texturePackerOptions} ${exportFolder}`)
+execSync(`texturepacker --data ${outputFile} --format json --sheet ${outputFile} ${texturePackerOptions} ${exportFolder}`)
 clearFolder(tmpObj.name)
 tmpObj.removeCallback()
 console.log('New sprite sheet created')

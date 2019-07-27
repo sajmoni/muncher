@@ -58,7 +58,7 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 "muncher@file:..":
-  version "0.0.1"
+  version "0.0.2"
   dependencies:
     tmp "^0.1.0"
 
