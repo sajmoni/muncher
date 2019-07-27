@@ -32,10 +32,12 @@ processFolder(inputFolder)
 execSync(`texturepacker --data ${outputFile} --format json --sheet ${outputFile} ${texturePackerOptions} ${exportFolder}`)
 clearFolder(tmpObj.name)
 tmpObj.removeCallback()
-console.log('New sprite sheet created')
+
+const GREEN_TEXT = '\x1b[32m'
+// eslint-disable-next-line no-console
+console.log(`${GREEN_TEXT}%s\x1b[0m`, 'Sprite sheet created!')
 
 function processFolder(folder) {
-  console.log(folder)
   fs.readdirSync(folder).forEach((file) => {
     if (fs.statSync(path.join(folder, file)).isDirectory()) {
       processFolder(`${folder + file}/`)
