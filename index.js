@@ -4,7 +4,7 @@ const path = require('path')
 const { execSync } = require('child_process')
 const fs = require('fs')
 const tmp = require('tmp')
-const argv = require('yargs').argv
+const { argv } = require('yargs')
 
 const inputFolder = argv.input
 const outputFile = argv.output
@@ -67,13 +67,13 @@ function piskelToPNG(folder, file) {
     outputFile: name,
   })
   if (name.includes('left') || name.includes('right')) {
-    const outputFile = name.includes('left') ? name.replace('left', 'right') : name.replace('right', 'left')
+    const outputFileName = name.includes('left') ? name.replace('left', 'right') : name.replace('right', 'left')
     splitFrames({
       height,
       width,
       foldername,
       inputFile: name,
-      outputFile,
+      outputFileName,
       flip: true,
     })
   }
@@ -93,10 +93,10 @@ function clearFolder(folder) {
 
 
 function splitFrames({
-  height, width, inputFile, outputFile, flip, foldername,
+  height, width, inputFile, outputFileName, flip, foldername,
 }) {
   const targetFolder = createFolder(path.join(exportFolder, foldername))
-  const targetFile = path.join(targetFolder, `${outputFile}-%01d.png`)
+  const targetFile = path.join(targetFolder, `${outputFileName}-%01d.png`)
   const flop = flip ? '-flop' : ''
   const command = `magick convert ${tempFolder}${inputFile}.png -crop ${width}x${height} ${flop} ${targetFile}`
   execSync(command)
