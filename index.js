@@ -8,6 +8,7 @@ const { argv } = require('yargs')
 
 const inputFolder = argv.input
 const outputFile = argv.output
+const flipEnabled = argv.flip
 
 if (!inputFolder) {
   throw new Error('No input folder specified, use the flag "--input ')
@@ -68,7 +69,9 @@ function piskelToPNG(folder, file) {
     inputFile: name,
     outputFile: name,
   })
-  if (name.includes('left') || name.includes('right')) {
+  // If the file name includes left or right:
+  // Generate a copy of the file that is flipped horizontally.
+  if ((name.includes('left') || name.includes('right')) && flipEnabled) {
     const outputFileName = name.includes('left') ? name.replace('left', 'right') : name.replace('right', 'left')
     splitFrames({
       height,
