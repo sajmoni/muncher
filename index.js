@@ -46,7 +46,7 @@ try {
 function processFolder(folder) {
   fs.readdirSync(folder).forEach((file) => {
     if (fs.statSync(path.join(folder, file)).isDirectory()) {
-      processFolder(`${folder + file}/`)
+      processFolder(`${folder}/${file}/`)
     } else if (file.endsWith('.piskel')) {
       piskelToPNG(folder, file)
     } else if (file.endsWith('.png')) {
