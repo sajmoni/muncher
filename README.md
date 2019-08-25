@@ -34,3 +34,18 @@ _It will use the options that you have specified in the Texture Packer UI._
 
  - Default input and output folders
  
+---
+
+## Develop
+
+### Test changes
+
+1. Make changes
+
+1. `yarn build`
+
+2. `cd example`
+
+3. `yarn refresh`
+
+4. `yarn munch`
