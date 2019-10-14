@@ -10,7 +10,7 @@
     "example": "example"
   },
   "scripts": {
-    "release": "np",
+    "release": "yarn build && np",
     "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
   },
   "author": "",
