@@ -1,7 +1,7 @@
 {
   "name": "muncher",
   "version": "0.0.5",
-  "description": "A tool to extract a spritesheet from the command line",
+  "description": "Generate sprite sheets from the command line",
   "main": "./index.js",
   "files": [
     "/index.js"
@@ -13,16 +13,8 @@
     "release": "np",
     "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sajmoni/extract-texture-packer.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sajmoni/extract-texture-packer/issues"
-  },
-  "homepage": "https://github.com/sajmoni/extract-texture-packer#readme",
   "bin": "./index.js",
   "dependencies": {
     "tmp": "^0.1.0",

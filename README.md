@@ -1,24 +1,71 @@
-# Muncher
+<h1 align="center" style="background-color: purple; color:green; padding: 10px 0 15px 0">
+  Muncher
+</h1>
+<h4 align="center">
+  Generate sprite sheets from the command line
+</h4>
+
+---
 
 Reads your `.png` and `.piskel` files and automatically generates sprite sheets using [Texture Packer](https://www.codeandweb.com/texturepacker).
 
 You just specify the `input` and `output` folders and the tool takes care of the rest.
 
+```
+muncher --input example/sprites/ --output example/output/spritesheet
+```
+
+---
+
+## Possible inputs
+
+ - :rice_scene: `.png`
+
+ - :movie_camera: `.piskel`
+
+ - :file_folder: `folder`
+
+---
+
 ## Requirements
 
- - Texture Packer CLI.
+### Texture Packer CLI
 
- - imagemagick
+ - Download [Texture Packer](https://www.codeandweb.com/texturepacker).
 
-_MacOS install: `brew install imagemagick`_
+ - Install the command line tool from the application UI.
+
+_Muncher will use the options that you have specified in the Texture Packer UI._
+
+### imagemagick
+
+#### MacOS
+
+You can install `imagemagick` with homebrew:
+
+`brew install imagemagick`
+
+#### Linux
+
+https://medium.com/@sanjaywrites/install-latest-version-of-imagemagick-in-ubuntu-16-04-c406ddea1973
+
+---
 
 ## How to use
 
+Best way to use it is to add it as a dependency in your project:
+
 `npm i --save-dev muncher` or `yarn add --dev muncher`
+
+You can also install it globally:
+
+`npm i -g muncher` or `yarn add --global muncher`
+
+Example usage:
 
 `muncher --input example/sprites/ --output example/output/spritesheet`
 
-_It will use the options that you have specified in the Texture Packer UI._
+---
 
 ## CLI flags
 
@@ -26,26 +73,28 @@ _It will use the options that you have specified in the Texture Packer UI._
 
 `output` - The output filename. A `.json` and a `.png` sprite sheet file will be created.
 
-`flip` - Every file name that contains either `left` or `right` will also generate a horizontally flipped copy.
+`flip` - Every file name that ends with either `left` or `right` will also generate a horizontally flipped copy.
 
-## Potential improvements
+---
 
- - Enable passing options on the command line
+## Inputs
 
- - Default input and output folders
- 
+`example.png` - The name of the texture will be `example.png` 
+
+`example.piskel` - Since `piskel` files can contain multiple images, the texture names will get a numbered suffix: `example-0.png`
+
 ---
 
 ## Develop
 
-### Test changes
+### Test your changes
 
 1. Make changes
 
-1. `yarn build`
+2. `yarn build`
 
-2. `cd example`
+3. `cd example`
 
-3. `yarn refresh`
+4. `yarn refresh`
 
-4. `yarn munch`
+5. `yarn munch`
