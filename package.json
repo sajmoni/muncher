@@ -20,13 +20,13 @@
   "bin": "dist/index.js",
   "dependencies": {
     "tmp": "0.1.0",
-    "yargs": "13.3.0"
+    "yargs": "15.1.0"
   },
   "devDependencies": {
-    "eslint": "6.1.0",
-    "eslint-config-airbnb-base": "13.2.0",
-    "eslint-plugin-import": "2.18.2",
-    "np": "5.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.0",
+    "np": "5.2.1",
     "parcel-bundler": "1.12.3",
     "parcel-plugin-shebang": "1.2.8"
   }
