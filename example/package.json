@@ -9,6 +9,6 @@
     "munch": "rm -rf output && muncher --input sprites --output output/spritesheet --flip"
   },
   "dependencies": {
-    "muncher": "file:../"
+    "muncher": "file:../muncher.tgz"
   }
 }

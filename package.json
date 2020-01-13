@@ -4,18 +4,20 @@
   "description": "Generate sprite sheets from the command line",
   "main": "./index.js",
   "files": [
-    "/index.js"
+    "dist/"
   ],
   "directories": {
     "example": "example"
   },
   "scripts": {
+    "clean": "rm -f muncher.tgz",
+    "build-test": "yarn clean && yarn build && yarn pack --filename muncher.tgz && cd example && yarn refresh && yarn munch && cd -",
     "release": "yarn build && np",
     "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
   },
   "author": "",
   "license": "ISC",
-  "bin": "./index.js",
+  "bin": "dist/index.js",
   "dependencies": {
     "tmp": "0.1.0",
     "yargs": "13.3.0"
