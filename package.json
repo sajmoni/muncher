@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rm -f muncher.tgz",
     "build-test": "yarn clean && yarn build && yarn pack --filename muncher.tgz && cd example && yarn refresh && yarn munch && cd -",
-    "release": "yarn build && np",
+    "release": "yarn build && np --no-tests",
     "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
   },
   "author": "",
