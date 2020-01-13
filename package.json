@@ -27,7 +27,7 @@
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.20.0",
     "np": "5.2.1",
-    "parcel-bundler": "1.12.3",
+    "parcel-bundler": "1.12.4",
     "parcel-plugin-shebang": "1.2.8"
   }
 }
