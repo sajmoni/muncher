@@ -85,6 +85,23 @@ Example usage:
 
 ---
 
+## Recipes
+
+### Multiple output sprite sheets
+
+Try to only use one output spritesheet for as long as possible. This is better for performance reasons. If your spritesheet becomes too big, try to divide it by layer in your game. For example, 'background' and 'foreground'. You can add your multiple muncher commands to a script and execute that one.
+
+For example:
+
+`./munch.sh`
+
+```sh
+muncher --input example/sprites/background/ --output example/output/background
+muncher --input example/sprites/foreground/ --output example/output/foreground
+```
+
+---
+
 ## Develop
 
 ### Test your changes
