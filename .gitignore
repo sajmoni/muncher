@@ -5,3 +5,5 @@ dist
 
 # Ignore for now since its updated every time a production build is made
 example/yarn.lock
+
+muncher.tgz

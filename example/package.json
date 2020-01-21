@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "refresh": "rm -rf node_modules && rm -f yarn.lock && yarn",
+    "refresh": "yarn cache clean && rm -rf node_modules && rm -f yarn.lock && yarn",
     "munch": "rm -rf output && muncher --input sprites --output output/spritesheet --flip",
     "munch-multiple": "rm -rf output && ./munch.sh"
   },
