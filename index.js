@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path')
+const chalk = require('chalk')
 const { execSync } = require('child_process')
 const fs = require('fs')
 const tmp = require('tmp')
@@ -31,15 +32,17 @@ const texturePackerOptions = ''
 try {
   processFolder(inputFolder)
 
-  execSync(`texturepacker --data ${outputFile}.json --format json --sheet ${outputFile}.png ${texturePackerOptions} ${exportFolder}`)
+  const result = execSync(`texturepacker --data ${outputFile}.json --format json --sheet ${outputFile}.png ${texturePackerOptions} ${exportFolder}`)
+  console.log()
+  console.log(`${chalk.green('Sprite sheet created!')}`)
+
   clearFolder(tmpObj.name)
   tmpObj.removeCallback()
 
-  const GREEN_TEXT = '\x1b[32m'
-  // eslint-disable-next-line no-console
-  console.log(`${GREEN_TEXT}%s\x1b[0m`, 'Sprite sheet created!')
+  console.log()
+  // * Log output from texture packer
+  console.log(result.toString())
 } catch (error) {
-  // eslint-disable-next-line no-console
   console.error(error)
 }
 

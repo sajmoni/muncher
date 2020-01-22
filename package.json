@@ -19,6 +19,7 @@
   "license": "ISC",
   "bin": "dist/index.js",
   "dependencies": {
+    "chalk": "3.0.0",
     "tmp": "0.1.0",
     "yargs": "15.1.0"
   },
