@@ -12,11 +12,13 @@ const outputFile = argv.output
 const flipEnabled = argv.flip
 
 if (!inputFolder) {
-  throw new Error('No input folder specified, use the flag "--input ')
+  console.error(chalk.red('No input folder specified, use the flag "--input '))
+  process.exit(1)
 }
 
 if (!outputFile) {
-  throw new Error('No output file specified, use the flag "--output"')
+  console.error(chalk.red('No output file specified, use the flag "--output"'))
+  process.exit(1)
 }
 
 const tmpObj = tmp.dirSync({ unsafeCleanup: false })
@@ -43,7 +45,8 @@ try {
   // * Log output from texture packer
   console.log(result.toString())
 } catch (error) {
-  console.error(error)
+  // * Don't log the error since error is already displayed by Texture packer
+  process.exit(1)
 }
 
 function processFolder(folder) {
