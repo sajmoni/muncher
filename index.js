@@ -11,6 +11,9 @@ const inputFolder = argv.input
 const outputFile = argv.output
 const flipEnabled = argv.flip
 
+let pngFilesMunched = 0
+let piskelFilesMunched = 0
+
 if (!inputFolder) {
   console.error(chalk.red('No input folder specified, use the flag "--input '))
   process.exit(1)
@@ -43,6 +46,10 @@ try {
   console.log()
   console.log(`${chalk.green('Sprite sheet created!')}`)
 
+  console.log()
+  console.log(`${piskelFilesMunched} .piskel files munched`)
+  console.log(`${pngFilesMunched} .png files munched`)
+
   clearFolder(tmpObj.name)
   tmpObj.removeCallback()
 
@@ -59,8 +66,10 @@ function processFolder(folder) {
     if (fs.statSync(path.join(folder, file)).isDirectory()) {
       processFolder(`${folder}/${file}/`)
     } else if (file.endsWith('.piskel')) {
+      piskelFilesMunched += 1
       piskelToPNG(folder, file)
     } else if (file.endsWith('.png')) {
+      pngFilesMunched += 1
       const foldername = folder.replace(inputFolder, '')
       const targetFolder = createFolder(path.join(exportFolder, foldername))
       fs.copyFileSync(path.join(folder, file), path.join(targetFolder, file))

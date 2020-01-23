@@ -1,7 +1,7 @@
 echo "=== Test 1 ==="
-muncher --input sprites/green --output output/background --flip
+muncher --input sprites --output output/spritesheet --flip
 echo "=== Test 2 ==="
-muncher --input sprites/square --output output/foreground --flip
+muncher --input sprites/square --output output/foreground
 echo "=== No input ==="
 echo ""
 muncher --output output/foreground --flip
