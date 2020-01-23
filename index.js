@@ -5,11 +5,27 @@ const chalk = require('chalk')
 const { execSync } = require('child_process')
 const fs = require('fs')
 const tmp = require('tmp')
-const { argv } = require('yargs')
+const yargs = require('yargs')
 
-const inputFolder = argv.input
-const outputFile = argv.output
-const flipEnabled = argv.flip
+yargs
+  .option('input', {
+    alias: 'i',
+    describe: 'Input folder name',
+  })
+  .option('output', {
+    alias: 'o',
+    describe: 'Output sprite sheet name',
+  })
+  .option('flip', {
+    describe: 'File names that end with "left" or "right" will also create horizontally flipped copies',
+  })
+  .boolean('flip')
+  .demandOption(['input', 'output'])
+  .parse()
+
+const inputFolder = yargs.argv.input
+const outputFile = yargs.argv.output
+const flipEnabled = yargs.argv.flip
 
 let pngFilesMunched = 0
 let piskelFilesMunched = 0
