@@ -9,9 +9,6 @@
   <img src="https://badgen.net/npm/dw/muncher?icon=npm" />
 </div>
 <div align="center">
-  <img src="https://badgen.net/bundlephobia/minzip/muncher" />
-</div>
-<div align="center">
   <img src="https://badgen.net/github/last-commit/sajmoni/muncher?icon=github" />
 </div>
 

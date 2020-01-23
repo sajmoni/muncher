@@ -2,7 +2,6 @@
   "name": "muncher",
   "version": "0.0.7",
   "description": "Generate sprite sheets from the command line",
-  "main": "dist/index.js",
   "files": [
     "dist/"
   ],
