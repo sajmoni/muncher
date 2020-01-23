@@ -4,6 +4,16 @@
 <h4 align="center">
   Generate sprite sheets from the command line
 </h4>
+<div align="center">
+  <img src="https://badgen.net/npm/v/muncher?icon=npm" />
+  <img src="https://badgen.net/npm/dw/muncher?icon=npm" />
+</div>
+<div align="center">
+  <img src="https://badgen.net/bundlephobia/minzip/muncher" />
+</div>
+<div align="center">
+  <img src="https://badgen.net/github/last-commit/sajmoni/muncher?icon=github" />
+</div>
 
 ---
 
@@ -89,7 +99,7 @@ Example usage:
 
 ### Multiple output sprite sheets
 
-Try to only use one output spritesheet for as long as possible. This is better for performance reasons. If your spritesheet becomes too big, try to divide it by layer in your game. For example, 'background' and 'foreground'. You can add your multiple muncher commands to a script and execute that one.
+Try to only use one output spritesheet for as long as possible. This is better for performance reasons. If your spritesheet becomes too big, try to divide it by layer in your game. For example, 'background' and 'foreground'. In that case, you can add multiple muncher commands to a script and execute that one.
 
 For example:
 
@@ -104,14 +114,12 @@ muncher --input example/sprites/foreground/ --output example/output/foreground
 
 ## Develop
 
-### Test your changes
+### Workflow
 
 1. Make changes
 
-2. `yarn build`
+2. `yarn build-test` - Builds, packs, installs to `example` folder and executes muncher there.
 
-3. `cd example`
+3. If everything works: `yarn release`
 
-4. `yarn refresh`
 
-5. `yarn munch`
