@@ -31,12 +31,12 @@ let pngFilesMunched = 0
 let piskelFilesMunched = 0
 
 if (!inputFolder) {
-  console.error(chalk.red('No input folder specified, use the flag "--input '))
+  console.error(`  ${chalk.red('No input folder specified, use the flag "--input ')}`)
   process.exit(1)
 }
 
 if (!outputFile) {
-  console.error(chalk.red('No output file specified, use the flag "--output"'))
+  console.error(`  ${chalk.red('No output file specified, use the flag "--output"')}`)
   process.exit(1)
 }
 
@@ -51,7 +51,7 @@ const texturePackerOptions =
 const texturePackerOptions = ''
 
 if (!fs.existsSync(inputFolder)) {
-  console.error(`${chalk.red('Could not find input folder')} ${chalk.blue(inputFolder)}. ${chalk.red('Did you misspell it?')}`)
+  console.error(`  ${chalk.red('Could not find input folder')} ${chalk.blue(inputFolder)}. ${chalk.red('Did you misspell it?')}`)
   process.exit(1)
 }
 
@@ -60,18 +60,21 @@ try {
 
   const result = execSync(`texturepacker --data ${outputFile}.json --format json --sheet ${outputFile}.png ${texturePackerOptions} ${exportFolder}`)
   console.log()
-  console.log(`${chalk.green('Sprite sheet created!')}`)
+  console.log(`  ${chalk.green('Sprite sheet created!')}`)
 
   console.log()
-  console.log(`${piskelFilesMunched} .piskel files munched`)
-  console.log(`${pngFilesMunched} .png files munched`)
+  console.log(`  ${chalk.blue(piskelFilesMunched)} .piskel files munched`)
+  console.log(`  ${chalk.blue(pngFilesMunched)} .png files munched`)
 
   clearFolder(tmpObj.name)
   tmpObj.removeCallback()
 
   console.log()
   // * Log output from texture packer
-  console.log(result.toString())
+  const outputRows = result.toString().split('\n')
+  outputRows.forEach((row) => {
+    console.log(`  ${row}`)
+  })
 } catch (error) {
   // * Don't log the error since error is already displayed by Texture packer
   process.exit(1)
