@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "refresh": "yarn cache clean && rm -rf node_modules && rm -f yarn.lock && yarn",
-    "munch": "rm -rf output && muncher --input sprites --output output/spritesheet --flip",
-    "munch-multiple": "rm -rf output && ./munch.sh"
+    "munch": "rm -rf output && ./munch.sh"
   },
   "dependencies": {
     "muncher": "file:../muncher.tgz"
