@@ -31,6 +31,11 @@ const texturePackerOptions =
 */
 const texturePackerOptions = ''
 
+if (!fs.existsSync(inputFolder)) {
+  console.error(`${chalk.red('Could not find input folder')} ${chalk.blue(inputFolder)}. ${chalk.red('Did you misspell it?')}`)
+  process.exit(1)
+}
+
 try {
   processFolder(inputFolder)
 
