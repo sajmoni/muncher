@@ -30,16 +30,6 @@ const flipEnabled = yargs.argv.flip
 let pngFilesMunched = 0
 let piskelFilesMunched = 0
 
-if (!inputFolder) {
-  console.error(`  ${chalk.red('No input folder specified, use the flag "--input ')}`)
-  process.exit(1)
-}
-
-if (!outputFile) {
-  console.error(`  ${chalk.red('No output file specified, use the flag "--output"')}`)
-  process.exit(1)
-}
-
 const tmpObj = tmp.dirSync({ unsafeCleanup: false })
 const tempFolder = createFolder(path.join(tmpObj.name, 'temp/'))
 const exportFolder = createFolder(path.join(tmpObj.name, 'export/'))
