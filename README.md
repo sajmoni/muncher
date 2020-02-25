@@ -7,8 +7,6 @@
 <div align="center">
   <img src="https://badgen.net/npm/v/muncher?icon=npm" />
   <img src="https://badgen.net/npm/dw/muncher?icon=npm" />
-</div>
-<div align="center">
   <img src="https://badgen.net/github/last-commit/sajmoni/muncher?icon=github" />
 </div>
 
@@ -36,7 +34,7 @@ muncher --input example/sprites/ --output example/output/spritesheet
 
 ## Requirements
 
-### Texture Packer CLI
+### **Texture Packer CLI**
 
  - Download [Texture Packer](https://www.codeandweb.com/texturepacker).
 
@@ -44,7 +42,9 @@ muncher --input example/sprites/ --output example/output/spritesheet
 
 _Muncher will use the options that you have specified in the Texture Packer UI._
 
-### imagemagick
+---
+
+### **imagemagick**
 
 #### MacOS
 
@@ -58,19 +58,25 @@ https://medium.com/@sanjaywrites/install-latest-version-of-imagemagick-in-ubuntu
 
 ---
 
+### **Node.js**
+
+[nodejs.org](https://nodejs.org/)
+
+---
+
 ## How to use
 
 Best way to use it is to add it as a dependency in your project:
 
 `npm i --save-dev muncher` or `yarn add --dev muncher`
 
-You can also install it globally:
-
-`npm i -g muncher` or `yarn add --global muncher`
-
 Example usage:
 
 `muncher --input example/sprites/ --output example/output/spritesheet`
+
+You can also use it with `npx`:
+
+`npx muncher --input example/sprites/ --output example/output/spritesheet`
 
 ---
 
@@ -118,5 +124,3 @@ muncher --input example/sprites/foreground/ --output example/output/foreground
 2. `yarn build-test` - Builds, packs, installs to `example` folder and executes muncher there.
 
 3. If everything works: `yarn release`
-
-

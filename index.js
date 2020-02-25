@@ -53,8 +53,8 @@ try {
   console.log(`  ${chalk.green('Sprite sheet created!')}`)
 
   console.log()
-  console.log(`  ${chalk.blue(piskelFilesMunched)} .piskel files munched`)
-  console.log(`  ${chalk.blue(pngFilesMunched)} .png files munched`)
+  console.log(`  ${chalk.blue(piskelFilesMunched)} .piskel file(s) munched`)
+  console.log(`  ${chalk.blue(pngFilesMunched)} .png file(s) munched`)
 
   clearFolder(tmpObj.name)
   tmpObj.removeCallback()
