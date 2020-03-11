@@ -34,6 +34,13 @@ const tmpObj = tmp.dirSync({ unsafeCleanup: false })
 const tempFolder = createFolder(path.join(tmpObj.name, 'temp/'))
 const exportFolder = createFolder(path.join(tmpObj.name, 'export/'))
 
+// TODO: Only check for left and right and the end of the file name
+// * Add a file with left in the middle to test this
+const shouldFlip = (name) => flipEnabled && (name.includes('left') || name.includes('right'))
+
+// TODO: Make sure that only "left" and "right" at the end of the file name is replaced
+const flipFileName = (name) => (name.includes('left') ? name.replace('left', 'right') : name.replace('right', 'left'))
+
 /* Free options
 const texturePackerOptions =
   '--extrude 0 --algorithm Basic --png-opt-level 0 --disable-auto-alias --trim-mode None'
@@ -67,6 +74,8 @@ try {
   })
 } catch (error) {
   // * Don't log the error since error is already displayed by Texture packer
+  // TODO: Add flag --verbose
+  // console.error('muncher error: ', error)
   process.exit(1)
 }
 
@@ -82,10 +91,17 @@ function processFolder(folder) {
       const foldername = folder.replace(inputFolder, '')
       const targetFolder = createFolder(path.join(exportFolder, foldername))
       fs.copyFileSync(path.join(folder, file), path.join(targetFolder, file))
+
+      const name = file.slice(0, -4)
+      if (shouldFlip(name)) {
+        const outputFileName = flipFileName(file)
+        const targetFile = path.join(targetFolder, outputFileName)
+        const command = `magick convert ${inputFolder}/${name}.png -flop ${targetFile}`
+        execSync(command)
+      }
     }
   })
 }
-
 
 function piskelToPNG(folder, file) {
   const data = JSON.parse(fs.readFileSync(`${folder}/${file}`, 'UTF-8'))
@@ -94,7 +110,7 @@ function piskelToPNG(folder, file) {
   const layers = getLayerData(data)
   const foldername = folder.replace(inputFolder, '')
 
-  writeLayersToFiles(layers, name)
+  writeLayersToFiles(layers)
   mergeLayers(layers, name)
   splitFrames({
     height,
@@ -105,8 +121,8 @@ function piskelToPNG(folder, file) {
   })
   // If the file name includes left or right:
   // Generate a copy of the file that is flipped horizontally.
-  if ((name.includes('left') || name.includes('right')) && flipEnabled) {
-    const outputFileName = name.includes('left') ? name.replace('left', 'right') : name.replace('right', 'left')
+  if (shouldFlip(name)) {
+    const outputFileName = flipFileName(name)
     splitFrames({
       height,
       width,
@@ -132,7 +148,7 @@ function clearFolder(folder) {
 
 
 function splitFrames({
-  height, width, inputFile, outputFileName, flip, foldername,
+  height, width, inputFile, outputFileName, flip = false, foldername,
 }) {
   const targetFolder = createFolder(path.join(exportFolder, foldername))
   const targetFile = path.join(targetFolder, `${outputFileName}-%01d.png`)
@@ -182,7 +198,6 @@ function getLayerData(data) {
     }
   })
 }
-
 
 function createFolder(folder) {
   try {
