@@ -14,8 +14,13 @@
     "release": "yarn build && np --no-tests",
     "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajmoni/muncher.git"
+  },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bin": "dist/index.js",
   "dependencies": {
     "chalk": "3.0.0",
