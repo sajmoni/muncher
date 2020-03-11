@@ -1,6 +1,6 @@
 {
   "name": "muncher",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Generate sprite sheets from the command line",
   "files": [
     "dist/"
