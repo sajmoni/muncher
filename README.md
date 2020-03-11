@@ -66,17 +66,29 @@ https://medium.com/@sanjaywrites/install-latest-version-of-imagemagick-in-ubuntu
 
 ## How to use
 
-Best way to use it is to add it as a dependency in your project:
+Example usage with `npx`:
 
-`npm i --save-dev muncher` or `yarn add --dev muncher`
+```shell
+npx muncher --input example/sprites/ --output example/output/spritesheet
+```
 
-Example usage:
+---
 
-`muncher --input example/sprites/ --output example/output/spritesheet`
+If your project includes a `package.json`, then the preferred way is to include `muncher` as a dev dependency:
 
-You can also use it with `npx`:
+```shell
+npm i --save-dev muncher
+``` 
+or 
+```shell
+yarn add --dev muncher
+```
 
-`npx muncher --input example/sprites/ --output example/output/spritesheet`
+You can then add a script to your package.json `scripts` section:
+
+```json
+"munch": "muncher --input example/sprites/ --output example/output/spritesheet"
+```
 
 ---
 
@@ -86,15 +98,21 @@ You can also use it with `npx`:
 
 `output` - The output filename. A `.json` and a `.png` sprite sheet file will be created.
 
-`flip` - Every file name that ends with either `left` or `right` will also generate a horizontally flipped copy.
+`flip` - Every file name that ends with either `left` or `right` will also generate a horizontally flipped copy. (Optional)
+
+<!-- `verbose` - Print more detailed output (Optional) -->
 
 ---
 
 ## Inputs
 
+**png**
+
 `example.png` - The name of the texture will be `example.png` 
 
-`example.piskel` - Since `piskel` files can contain multiple images, the texture names will get a numbered suffix: `example-0.png`
+**piskel**
+
+`example.piskel` - Since `piskel` files can contain multiple images (frames), the texture names will get a numbered suffix: `example-0.png`
 
 ---
 
@@ -102,9 +120,9 @@ You can also use it with `npx`:
 
 ### Multiple output sprite sheets
 
-Try to only use one output spritesheet for as long as possible. This is better for performance reasons. If your spritesheet becomes too big, try to divide it by layer in your game. For example, 'background' and 'foreground'. In that case, you can add multiple muncher commands to a script and execute that one.
+Try to only use one output spritesheet for as long as possible. This is better for performance reasons. If your spritesheet becomes too big, try to separate it by layer in your game. For example, 'background' and 'foreground'. In that case, you can add multiple muncher commands to a script and execute that one.
 
-For example:
+Example:
 
 `./munch.sh`
 
@@ -123,4 +141,4 @@ muncher --input example/sprites/foreground/ --output example/output/foreground
 
 2. `yarn build-test` - Builds, packs, installs to `example` folder and executes muncher there.
 
-3. If everything works: `yarn release`
+3. If everything works: push `master` or make a `PR`
