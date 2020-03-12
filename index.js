@@ -96,7 +96,7 @@ function processFolder(folder) {
       if (shouldFlip(name)) {
         const outputFileName = flipFileName(file)
         const targetFile = path.join(targetFolder, outputFileName)
-        const command = `magick convert ${inputFolder}/${name}.png -flop ${targetFile}`
+        const command = `magick convert ${path.join(folder, file)} -flop ${targetFile}`
         execSync(command)
       }
     }
