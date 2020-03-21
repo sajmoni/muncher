@@ -11,8 +11,9 @@
   "scripts": {
     "clean": "rm -f muncher.tgz",
     "build-test": "yarn clean && yarn build && yarn pack --filename muncher.tgz && cd example && yarn refresh && yarn munch && cd -",
-    "release": "yarn build && np --no-tests",
-    "build": "rm -rf dist && parcel build ./index.js --target node --no-cache"
+    "release": "yarn clean && yarn build && yarn audit && np",
+    "build": "rm -rf dist && parcel build ./src/index.js --target node --no-cache",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -22,17 +23,36 @@
   "author": "",
   "license": "MIT",
   "bin": "dist/index.js",
+  "prettier": {
+    "trailingComma": "all",
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn clean && lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "dependencies": {
     "chalk": "3.0.0",
+    "fs-extra": "8.1.0",
     "tmp": "0.1.0",
-    "yargs": "15.3.0"
+    "yargs": "15.3.1"
   },
   "devDependencies": {
+    "ava": "3.5.0",
     "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.0.0",
-    "eslint-plugin-import": "2.20.1",
+    "eslint-config-prettier": "6.10.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8",
     "np": "6.2.0",
     "parcel-bundler": "1.12.4",
-    "parcel-plugin-shebang": "1.2.8"
+    "parcel-plugin-shebang": "1.2.8",
+    "prettier": "1.19.1",
+    "typescript": "3.8.3"
   }
 }

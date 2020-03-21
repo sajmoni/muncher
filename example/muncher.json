@@ -1,0 +1,6 @@
+{
+  "input": "sprites",
+  "output": "output/usingConfig",
+  "flip": true,
+  "extrude": 5
+}
