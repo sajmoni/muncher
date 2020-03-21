@@ -58,7 +58,7 @@ You can then add a script to your package.json `scripts` section:
 
 `flip` - Every file name that ends with either `left` or `right` will also generate a horizontally flipped copy. (Optional)
 
-`config` - Instead of passing options on the command line, you can specify them in a config file (Optional)
+`config` - Path to config file. (Optional)
 
 ### Texture packer options
 
@@ -72,19 +72,23 @@ muncher --input sprites --output output/spritesheet --extrude 5 --multipack
 
 ### Config file
 
-All flags can also be specified in a config file:
+Instead of passing options as flags on the command line, you can specify them in a config file:
 
 ```shell
 npx muncher --config muncher.json
 ```
 
+The format has to be `.json`
+
 `muncher.json`
 
 ```json
+{
   "input": "sprites",
   "output": "output/spritesheet",
   "flip": true,
   "extrude": 5
+}
 ```
 
 ---
