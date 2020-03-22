@@ -1,12 +1,12 @@
 /**
  * @param {string} filePath
  */
-const getFolderPath = filePath =>
+const getFolderPath = (filePath) =>
   filePath.substring(0, filePath.lastIndexOf('/'))
 /**
  * @param {string} filePath
  */
-const getFileName = filePath =>
+const getFileName = (filePath) =>
   filePath.substring(filePath.lastIndexOf('/') + 1, filePath.lastIndexOf('.'))
 
 // TODO: Only check for left and right and the end of the file name
@@ -14,13 +14,13 @@ const getFileName = filePath =>
 /**
  * @param {string} name
  */
-const shouldFlip = name => name.includes('left') || name.includes('right')
+const shouldFlip = (name) => name.includes('left') || name.includes('right')
 
 // TODO: Make sure that only "left" and "right" at the end of the file name is replaced
 /**
  * @param {string} name
  */
-const flipFileName = name =>
+const flipFileName = (name) =>
   name.includes('left')
     ? name.replace('left', 'right')
     : name.replace('right', 'left')
@@ -28,7 +28,7 @@ const flipFileName = name =>
 /**
  * @param {string} folderPath
  */
-const removeInitialFolderFromPath = folderPath => {
+const removeInitialFolderFromPath = (folderPath) => {
   if (!folderPath.includes('/')) {
     return ''
   }

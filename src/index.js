@@ -83,7 +83,7 @@ if (!fs.existsSync(inputFolder)) {
 /**
  * @param {string[]} layersJSON
  */
-const parseLayersJSON = layersJSON => {
+const parseLayersJSON = (layersJSON) => {
   /**
    * @param {string} layerJSON
    * @param {number} index
@@ -105,7 +105,7 @@ const writeLayersToFiles = ({ destinationFolderPath, layers }) => {
   /**
    * @param {{ name: string; png: any; opacity: number; }} layer
    */
-  layers.forEach(layer => {
+  layers.forEach((layer) => {
     const destinationPath = path.join(destinationFolderPath, layer.name)
     fs.writeFileSync(destinationPath, layer.png)
     if (layer.opacity !== 1) {
@@ -123,7 +123,7 @@ const mergeLayers = ({ destinationFolderPath, fileName, layers }) => {
     const /**
        * @param {{ name: string; }} layer
        */
-      oldFilePaths = layers.map(layer =>
+      oldFilePaths = layers.map((layer) =>
         path.join(destinationFolderPath, layer.name),
       )
     const /**
@@ -142,7 +142,7 @@ const mergeLayers = ({ destinationFolderPath, fileName, layers }) => {
     /**
      * @param {any} oldFilePath
      */
-    oldFilePaths.forEach(oldFilePath => {
+    oldFilePaths.forEach((oldFilePath) => {
       fs.removeSync(oldFilePath)
     })
   } else {
@@ -189,7 +189,7 @@ const processFilesAndCopyToTempFolder = (filePaths, tempFolderName) => {
   /**
    * @param {string} sourceFullPath
    */
-  filePaths.forEach(sourceFullPath => {
+  filePaths.forEach((sourceFullPath) => {
     const fileName = getFileName(sourceFullPath)
     const sourceFolderPath = getFolderPath(sourceFullPath)
 
@@ -290,7 +290,7 @@ try {
   // * Log output from texture packer:
   // * Spritesheet name and dimensions
   const outputRows = texturePackerResult.toString().split('\n')
-  outputRows.forEach(row => {
+  outputRows.forEach((row) => {
     console.log(`  ${row}`)
   })
   console.log()

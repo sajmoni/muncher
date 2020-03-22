@@ -9,11 +9,11 @@ const VALID_FILES = [PISKEL, PNG]
  * @param {import("fs").PathLike} directory
  */
 // @ts-ignore
-const getFileNames = directory => {
+const getFileNames = (directory) => {
   /**
    * @param {string} file
    */
-  return fs.readdirSync(directory).flatMap(file => {
+  return fs.readdirSync(directory).flatMap((file) => {
     // @ts-ignore
     const fullPath = path.join(directory, file)
     if (fs.lstatSync(fullPath).isDirectory()) {
@@ -26,13 +26,13 @@ const getFileNames = directory => {
 /**
  * @param {string} fileName
  */
-const isValidFile = fileName =>
-  VALID_FILES.some(valid => fileName.endsWith(valid))
+const isValidFile = (fileName) =>
+  VALID_FILES.some((valid) => fileName.endsWith(valid))
 
 /**
  * @param {string} directory
  */
-const getValidFileNames = directory =>
+const getValidFileNames = (directory) =>
   getFileNames(directory).filter(isValidFile)
 
 module.exports = getValidFileNames
