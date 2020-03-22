@@ -5,7 +5,7 @@ const {
   getFileName,
   shouldFlip,
   flipFileName,
-  removeInitialFolderFromPath,
+  removeInputFolderFromPath,
 } = require('./src/util')
 
 const fullPath1 = 'sprites/hello.png'
@@ -33,7 +33,9 @@ test('flipFileName', t => {
 })
 
 test('removeInitialFolderFromPath', t => {
-  t.is(removeInitialFolderFromPath(getFolderPath(fullPath1)), '')
-  t.is(removeInitialFolderFromPath(getFolderPath(fullPath2)), 'subfolder')
-  t.is(removeInitialFolderFromPath(fullPath2), 'subfolder/hello.png')
+  const inputFolder = 'asset/sprite'
+  const fullSourcePath1 = 'asset/sprite/hello.png'
+  const fullSourcePath2 = 'asset/sprite/subfolder/hello.png'
+  t.is(removeInputFolderFromPath(inputFolder, getFolderPath(fullSourcePath1)), '')
+  t.is(removeInputFolderFromPath(inputFolder, getFolderPath(fullSourcePath2)), '/subfolder')
 })

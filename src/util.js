@@ -28,11 +28,8 @@ const flipFileName = (name) =>
 /**
  * @param {string} folderPath
  */
-const removeInitialFolderFromPath = (folderPath) => {
-  if (!folderPath.includes('/')) {
-    return ''
-  }
-  return folderPath.substring(folderPath.indexOf('/') + 1, folderPath.length)
+const removeInputFolderFromPath = (inputFolder, folderPath) => {
+  return folderPath.replace(`${inputFolder}`, '')
 }
 
 module.exports = {
@@ -40,5 +37,5 @@ module.exports = {
   getFileName,
   shouldFlip,
   flipFileName,
-  removeInitialFolderFromPath,
+  removeInputFolderFromPath,
 }

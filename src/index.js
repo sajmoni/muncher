@@ -13,7 +13,7 @@ const {
   getFileName,
   shouldFlip,
   flipFileName,
-  removeInitialFolderFromPath,
+  removeInputFolderFromPath,
 } = require('./util')
 
 yargs
@@ -195,7 +195,7 @@ const processFilesAndCopyToTempFolder = (filePaths, tempFolderName) => {
 
     const destinationFolderPath = path.join(
       tempFolderName,
-      removeInitialFolderFromPath(sourceFolderPath),
+      removeInputFolderFromPath(inputFolder, sourceFolderPath),
     )
 
     fs.ensureDirSync(destinationFolderPath)
