@@ -107,11 +107,11 @@ With `flip` enabled:
 
 Since `piskel` files can contain multiple images (frames), the texture name will include the frame index as a suffix:
 
-`example.piskel` => `example-0.png`
+`example.piskel` => `example-1.png`
 
 With `flip` enabled:
 
-`example-right.piskel` => `example-right-0.png` and `example-left-0.png`
+`example-right.piskel` => `example-right-1.png` and `example-left-1.png`
 
 ### Example
 

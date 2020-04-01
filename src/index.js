@@ -176,8 +176,11 @@ const splitFrames = ({
 
   const flop = flip ? '-flop' : ''
 
+  // * Since Piskel frame numbers start at 1, so should our output
+  const scene = '-scene 1'
+
   execSync(
-    `magick convert ${inputFullPath} -crop ${width}x${height} ${flop} ${destinationFullPath}`,
+    `magick convert ${inputFullPath} -crop ${width}x${height} ${flop} ${scene} ${destinationFullPath}`,
   )
 }
 
