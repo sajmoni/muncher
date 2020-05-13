@@ -35,13 +35,7 @@ yargs
   .parse()
 
 const {
-  argv: {
-    input: inputFolder,
-    output: outputFile,
-    flip: flipEnabled,
-    force,
-    ...rest
-  },
+  argv: { input: inputFolder, output: outputFile, flip: flipEnabled, ...rest },
 } = yargs
 
 const texturePackerOptionEntries = Object.entries(rest).filter(
